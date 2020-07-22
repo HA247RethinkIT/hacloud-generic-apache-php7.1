@@ -1,0 +1,9 @@
+version: "3"
+services:
+  test:
+    build: .
+    ports:
+      - 8082:80
+    volumes:
+      - ./index.php:/var/www/index.php
+      - ./user.ini:/etc/php5/conf.d/user.ini
