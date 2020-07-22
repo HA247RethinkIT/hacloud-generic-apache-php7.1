@@ -3,7 +3,9 @@ services:
   test:
     build: .
     ports:
-      - 8082:80
+      - 8082:90
+    environment:
+      - PORT=90
     volumes:
       - ./index.php:/var/www/index.php
-      - ./user.ini:/etc/php5/conf.d/user.ini
+      - ./config/user.ini:/etc/php5/conf.d/user.ini

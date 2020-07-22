@@ -1,6 +1,8 @@
 FROM ubuntu:12.04
 MAINTAINER devops@ha247.co.uk
 
+ENV PORT 80
+
 # Ensure UTF-8
 RUN locale-gen en_GB.UTF-8
 ENV LANG       en_GB.UTF-8
@@ -53,12 +55,17 @@ RUN set -x \
     && apt-get clean -y
 
 
+# Add test
 COPY test/run_test.sh /
 RUN chmod +x /run_test.sh
 
+# Add custom config & start up script
+COPY config/000-default /etc/apache2/sites-enabled/000-default
+COPY entrypoint.sh /
+RUN chmod +x /entrypoint.sh
 
 # Expose Apache
-EXPOSE 80
+EXPOSE $PORT
  
 # Launch Apache
-CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]
+CMD ["/entrypoint.sh"]
