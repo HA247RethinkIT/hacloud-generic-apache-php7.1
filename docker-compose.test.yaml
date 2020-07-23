@@ -3,3 +3,5 @@ services:
   sut:
     build: .
     command: /run_test.sh
+    volumes:
+      - ./config/index.php:/var/www/index.php
