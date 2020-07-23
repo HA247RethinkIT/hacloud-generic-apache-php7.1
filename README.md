@@ -6,6 +6,7 @@ This project is intended provide a simple way of running PHP 5.3 on HA Cloud
 
 This is designed to run on HA Cloud. However, this can be run on any platform. 
 
+
 ### Configure PHP Variables
 
 At boot and environment variables (PHP_*) are written to /etc/php5/conf.d/user.ini
@@ -31,6 +32,16 @@ services:
       - PHP_post_max_size=100M
       - PHP_short_open_tag=On
       - PHP_upload_max_filesize=100M
+```
+
+### HA Cloud
+
+Defining the PORT allows us to run this container  with the host network
+
+The below config will make the container run on 127.0.0.1:8001. Nginx can then proxy the connections.
+```
+    environment:
+      - PORT=8001
 ```
 
 
