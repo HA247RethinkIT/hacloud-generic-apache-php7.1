@@ -3,3 +3,4 @@ Dockerfile
 README.md
 docker-compose.test.yaml
 docker-compose.yaml
+ChangeLog.md
