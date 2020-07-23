@@ -7,5 +7,5 @@ services:
     environment:
       - PORT=90
     volumes:
-      - ./index.php:/var/www/index.php
+      - ./config/index.php:/var/www/index.php
       - ./config/user.ini:/etc/php5/conf.d/user.ini
