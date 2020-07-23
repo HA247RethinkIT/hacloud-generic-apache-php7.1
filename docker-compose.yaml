@@ -6,6 +6,16 @@ services:
       - 8082:90
     environment:
       - PORT=90
+      - PHP_disable_functions=exec()
+      - PHP_display_errors=On
+      - PHP_error_reporting=On
+      - PHP_max_execution_time=60
+      - PHP_max_input_time=60
+      - PHP_max_input_vars=300
+      - PHP_max_post_size=100M
+      - PHP_memory_limit=1024M
+      - PHP_post_max_size=100M
+      - PHP_short_open_tag=On
+      - PHP_upload_max_filesize=100M
     volumes:
       - ./config/index.php:/var/www/index.php
-      - ./config/user.ini:/etc/php5/conf.d/user.ini
