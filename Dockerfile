@@ -18,14 +18,13 @@ RUN set -x && apt-get install -y --no-install-recommends \
 
 # Install services
 RUN set -x \
-    && apt-get install -y \
+    && apt-get install -y --no-install-recommends \
         ssmtp \
         dnsmasq 
 
 # Install apache and php
 RUN set -x \
-    && apt-get update \
-    && apt-get install -y \
+    && apt-get install -y --no-install-recommends \
         apache2 \
         apache2-mpm-prefork \
         apache2-utils \
