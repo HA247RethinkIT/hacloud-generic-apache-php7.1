@@ -58,6 +58,9 @@ RUN set -x \
 COPY test/run_test.sh /
 RUN chmod +x /run_test.sh
 
+# Add index.php to webroot - for testing
+COPY config/index.php /var/www/index.php
+
 # Add custom config & start up script
 COPY config/000-default /etc/apache2/sites-enabled/000-default
 COPY config/ports.conf /etc/apache2/ports.conf

@@ -2,8 +2,4 @@ version: "3"
 services:
   sut:
     build: .
-    environment:
-      - PORT=90
     command: /run_test.sh
-    volumes:
-      - ./config/index.php:/var/www/index.php

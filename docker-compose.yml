@@ -17,5 +17,3 @@ services:
       - PHP_post_max_size=100M
       - PHP_short_open_tag=On
       - PHP_upload_max_filesize=100M
-    volumes:
-      - ./config/index.php:/var/www/index.php
