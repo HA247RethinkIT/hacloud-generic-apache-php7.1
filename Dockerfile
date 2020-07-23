@@ -61,6 +61,7 @@ RUN chmod +x /run_test.sh
 # Add custom config & start up script
 COPY config/000-default /etc/apache2/sites-enabled/000-default
 COPY config/ports.conf /etc/apache2/ports.conf
+COPY config/security /etc/apache2/conf.d/security
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
