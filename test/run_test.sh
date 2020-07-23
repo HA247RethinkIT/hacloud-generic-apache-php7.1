@@ -4,5 +4,5 @@
 sleep 2
 
 # Check we are alive
-curl http://localhost:PORT/index.php
+curl --silent --fail http://localhost:PORT/index.php || exit 1
 
