@@ -68,6 +68,9 @@ COPY config/security /etc/apache2/conf.d/security
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
+# Enable Apache modules
+a2enmod rewrite
+
 # Expose Apache
 EXPOSE $PORT
  
