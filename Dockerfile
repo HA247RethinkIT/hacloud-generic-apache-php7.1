@@ -70,6 +70,7 @@ RUN chmod +x /entrypoint.sh
 
 # Enable Apache modules
 RUN a2enmod rewrite
+RUN a2enmod headers
 
 # Expose Apache
 EXPOSE $PORT
