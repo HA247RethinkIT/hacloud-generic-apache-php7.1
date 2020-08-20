@@ -1,5 +1,6 @@
 <VirtualHost *:PORT>
 	ServerAdmin webmaster@localhost
+        SetEnvIf X-Forwarded-Protocol https HTTPS=on
 
 	DocumentRoot /var/www
 	<Directory />
