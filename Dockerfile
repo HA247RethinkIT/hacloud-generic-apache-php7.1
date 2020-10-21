@@ -68,9 +68,9 @@ COPY config/security /etc/apache2/conf.d/security
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
-
-# Add config so ssmtp can send email via the hosts mail server
-RUN echo >> "172.17.0.1	mail" > /etc/hosts
+# Ubuntu 12.04 comes with ssmtp intalled. We need to configure the mailhub to the the IP Address of the host.
+# The Docker gateway is 172.17.0.1. Install Exim or Sendmail here
+RUN sed 's/^mailhub=mail/mailhub=172.17.0.1/' /etc/ssmtp/ssmtp.conf
 
 # Enable Apache modules
 RUN a2enmod rewrite
