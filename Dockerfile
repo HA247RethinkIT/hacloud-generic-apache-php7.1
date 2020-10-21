@@ -68,6 +68,10 @@ COPY config/security /etc/apache2/conf.d/security
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
+
+# Add config so ssmtp can send email via the hosts mail server
+echo >> "172.17.0.1	mail" > /etc/hosts
+
 # Enable Apache modules
 RUN a2enmod rewrite
 RUN a2enmod headers
