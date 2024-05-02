@@ -1,4 +1,4 @@
-FROM ubuntu:12.04
+FROM ubuntu:14.04
 MAINTAINER devops@ha247.co.uk
 
 ENV PORT 80
@@ -68,7 +68,7 @@ COPY config/security /etc/apache2/conf.d/security
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
-# Ubuntu 12.04 comes with ssmtp intalled. We need to configure the mailhub to the the IP Address of the host.
+# Ubuntu 14.04 comes with ssmtp intalled. We need to configure the mailhub to the the IP Address of the host.
 # The Docker gateway is 172.17.0.1. Install Exim or Sendmail here
 RUN sed -i 's/^mailhub=mail/mailhub=172.17.0.1/' /etc/ssmtp/ssmtp.conf
 
