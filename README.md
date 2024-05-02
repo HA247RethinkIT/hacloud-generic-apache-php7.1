@@ -1,6 +1,6 @@
-# Generic Apache + Mod_PHP 5.3
+# Generic Apache + Mod_PHP 5.5
 
-This project is intended provide a simple way of running PHP 5.3 on HA Cloud
+This project is intended provide a simple way of running PHP 5.5 on HA Cloud
 
 ## Prerequisite
 
@@ -16,7 +16,7 @@ At boot and environment variables (PHP_*) are written to /etc/php5/conf.d/user.i
 version: "3"
 services:
   test:
-    image: ha247/hacloud-generic-apache-php5.3
+    image: ha247/hacloud-generic-apache-php5.5
     ports:
       - 8082:80
     environment:
