@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:13.04
 MAINTAINER devops@ha247.co.uk
 
 ENV PORT 80
@@ -11,7 +11,11 @@ ENV LC_ALL     en_GB.UTF-8
 
 # Make sure apt is uptodate
 RUN DEBIAN_FRONTEND=noninteractive
-RUN set -x && apt-get update
+RUN sed -i \
+    -e 's|http://archive.ubuntu.com/ubuntu/|http://old-releases.ubuntu.com/ubuntu/|g' \
+    -e 's|http://security.ubuntu.com/ubuntu/|http://old-releases.ubuntu.com/ubuntu/|g' \
+    /etc/apt/sources.list \
+ && apt-get update
 RUN set -x && apt-get install -y --no-install-recommends \
   unzip \
   curl
