@@ -6,7 +6,7 @@ services:
       - 8082:80
     environment:
       - PORT=80
-      - PHP_disable_functions=exec()
+      - PHP_disable_functions=exec
       - PHP_display_errors=On
       - PHP_error_reporting=On
       - PHP_max_execution_time=60
