@@ -9,7 +9,9 @@ This is designed to run on HA Cloud. However, this can be run on any platform.
 
 ### Configure PHP Variables
 
-At boot and environment variables (PHP_*) are written to /etc/php7.1/conf.d/user.ini
+At boot and environment variables (PHP7_*) are written to /usr/local/etc/php/conf.d/user.ini
+
+It's important to note the 'PHP7_', as defining just 'PHP_' will include some other stuff we don't want to grab
 
 ### Docker Compose
 ```
@@ -21,17 +23,17 @@ services:
       - 8082:80
     environment:
       - PORT=80
-      - PHP_disable_functions=exec()
-      - PHP_display_errors=On
-      - PHP_error_reporting=On
-      - PHP_max_execution_time=60
-      - PHP_max_input_time=60
-      - PHP_max_input_vars=300
-      - PHP_max_post_size=100M
-      - PHP_memory_limit=1024M
-      - PHP_post_max_size=100M
-      - PHP_short_open_tag=On
-      - PHP_upload_max_filesize=100M
+      - PHP7_disable_functions=exec
+      - PHP7_display_errors=On
+      - PHP7_error_reporting=On
+      - PHP7_max_execution_time=60
+      - PHP7_max_input_time=60
+      - PHP7_max_input_vars=300
+      - PHP7_max_post_size=100M
+      - PHP7_memory_limit=1024M
+      - PHP7_post_max_size=100M
+      - PHP7_short_open_tag=On
+      - PHP7_upload_max_filesize=100M
 ```
 
 ### HA Cloud

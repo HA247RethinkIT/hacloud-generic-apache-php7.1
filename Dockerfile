@@ -22,11 +22,14 @@ RUN apt-get install -y --no-install-recommends \
 COPY test/run_test.sh /run_test.sh
 RUN chmod +x /run_test.sh
 
+# Copy the production php.ini
+RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
+
 # Copy a simple index.php for smoke-testing
-COPY config/index.php /var/www/html/index.php
+COPY config/index.php /var/www/index.php
 
 # Apache site & port configs
-COPY config/000-default /etc/apache2/sites-enabled/000-default
+COPY config/000-default /etc/apache2/sites-enabled/000-default.conf
 COPY config/ports.conf  /etc/apache2/ports.conf
 
 # Custom security config
@@ -42,6 +45,9 @@ COPY config/msmtprc /etc/msmtprc
 
 # Enable Apache modules
 RUN a2enmod rewrite headers
+
+# Set the entrypoint
+WORKDIR /var/www
 
 # Expose port and start
 EXPOSE $PORT
