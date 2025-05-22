@@ -1,6 +1,6 @@
-# Generic Apache + Mod_PHP 5.5
+# Modified php7.1-apache image
 
-This project is intended provide a simple way of running PHP 5.5 on HA Cloud
+This project is intended provide a simple way of running PHP 7.1 on HA Cloud
 
 ## Prerequisite
 
@@ -9,7 +9,7 @@ This is designed to run on HA Cloud. However, this can be run on any platform.
 
 ### Configure PHP Variables
 
-At boot and environment variables (PHP_*) are written to /etc/php5/conf.d/user.ini
+At boot and environment variables (PHP_*) are written to /etc/php7.1/conf.d/user.ini
 
 ### Docker Compose
 ```
