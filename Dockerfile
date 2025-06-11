@@ -21,6 +21,9 @@ RUN apt-get install -y --no-install-recommends \
 # Install PHP extensions
 RUN docker-php-ext-install mysqli
 
+# Install PHP extensions
+RUN docker-php-ext-install mysqli
+
 # Copy and set up test script
 COPY test/run_test.sh /run_test.sh
 RUN chmod +x /run_test.sh
