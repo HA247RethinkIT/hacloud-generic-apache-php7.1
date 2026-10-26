@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 
 ##
+## [0.0.3]
+### Fix
+- Point apt at archive.debian.org. Debian 10 (buster) has been removed from the main mirrors, so the build failed at apt-get update
+
+##
 ## [0.0.2]
 ### Fix
 - Disable session.upload_progress by default to mitigate PHP2Shell (CVE-2026-109618 / CVE-2026-109619). Set PHP_session.upload_progress.enabled=1 to re-enable

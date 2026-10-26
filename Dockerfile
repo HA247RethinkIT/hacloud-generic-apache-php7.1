@@ -6,6 +6,13 @@ ENV PORT=80 \
     LANG=en_GB.UTF-8 \
     LC_ALL=en_GB.UTF-8
 
+# Debian 10 (buster) is end of life and has moved to archive.debian.org.
+# The archive's Release files are long expired, so skip that check.
+RUN sed -i -e 's#deb.debian.org#archive.debian.org#' \
+           -e 's#security.debian.org/debian-security#archive.debian.org/debian-security#' \
+           /etc/apt/sources.list \
+ && echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99archive
+
 # Generate locale
 RUN apt-get update \
  && apt-get install -y --no-install-recommends locales \
