@@ -13,6 +13,8 @@ At boot any environment variables (PHP_* or PHP7_*) are written to /usr/local/et
 
 Only names followed by a lowercase directive are used, e.g. `PHP_memory_limit=256M` or `PHP_session.upload_progress.enabled=0`. This skips the base image's own uppercase build variables such as PHP_VERSION and PHP_INI_DIR.
 
+`session.upload_progress.enabled` defaults to `0` as a PHP2Shell (CVE-2026-109618 / CVE-2026-109619) mitigation. Set `PHP_session.upload_progress.enabled=1` only if a site genuinely needs upload progress.
+
 ### Docker Compose
 ```
 version: "3"
