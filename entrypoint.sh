@@ -4,8 +4,14 @@
 sed -i "s/PORT/$PORT/g" /etc/apache2/ports.conf
 sed -i "s/PORT/$PORT/g" /etc/apache2/sites-enabled/000-default.conf
 
-# Set any variables we have in the env for php
-printenv |grep 'PHP7_'|sed 's/^PHP7_//' > /usr/local/etc/php/conf.d/user.ini
+# Set any variables we have in the env for php.
+# Accept PHP_ or PHP7_ followed by a lowercase ini directive. The base image
+# defines its own PHP_* build vars (PHP_VERSION, PHP_INI_DIR...) which are
+# all uppercase, so they are skipped.
+# PHP2Shell (CVE-2026-109618 / CVE-2026-109619) mitigation. Written first
+# so a PHP_session.upload_progress.enabled env var can still override it.
+echo 'session.upload_progress.enabled = 0' > /usr/local/etc/php/conf.d/user.ini
+printenv | grep -E '^PHP7?_[a-z]' | sed -E 's/^PHP7?_//' >> /usr/local/etc/php/conf.d/user.ini
 # Hide PHP Version
 echo 'expose_php = Off' >> /usr/local/etc/php/conf.d/user.ini
 

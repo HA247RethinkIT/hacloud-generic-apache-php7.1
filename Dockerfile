@@ -54,4 +54,8 @@ WORKDIR /var/www
 
 # Expose port and start
 EXPOSE $PORT
+# Drop the base image's docker-php-entrypoint. It is a /bin/sh script and
+# dash strips env vars with dots in the name (e.g. PHP_session.*), so they
+# would never reach /entrypoint.sh.
+ENTRYPOINT []
 CMD ["/entrypoint.sh"]
